@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Video, Info, Target } from 'lucide-react';
+import VideoPlayer from './VideoPlayer';
 
 async function getFigure(id: string) {
   const figure = await prisma.figure.findUnique({
@@ -44,7 +45,6 @@ export default async function FigureDetailPage({
         </Link>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Image/Video Section */}
           <div>
             {figure.imageUrl && (
               <div className="rounded-2xl overflow-hidden bg-gray-800 border border-gray-700 mb-6">
@@ -62,11 +62,7 @@ export default async function FigureDetailPage({
                   <Video className="w-5 h-5 text-blue-400" />
                   <span className="font-semibold">Vidéo démonstration</span>
                 </div>
-                <video
-                  src={figure.videoUrl}
-                  controls
-                  className="w-full"
-                />
+                    {<VideoPlayer videoId={figure.videoUrl} />}
               </div>
             )}
           </div>
