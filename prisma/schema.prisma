@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Figure {
+  id            String         @id @default(cuid())
+  name          String
+  description   String         @db.Text
+  level         Int            // 1-40
+  category      String         // beginner, intermediate, advanced, elite
+  imageUrl      String?
+  videoUrl      String?
+  tips          String         @db.Text
+  prerequisites String?        @db.Text
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  progressions  Progression[]
+
+  @@index([level])
+  @@index([category])
+}
+
+model Progression {
+  id          String   @id @default(cuid())
+  figureId    String
+  figure      Figure   @relation(fields: [figureId], references: [id], onDelete: Cascade)
+  unlockedAt  DateTime @default(now())
+  percentage  Int      @default(0) // 0-100
+  notes       String?  @db.Text
+  mediaUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([figureId])
+}
