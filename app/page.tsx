@@ -6,21 +6,21 @@ export default function HomePage() {
     {
       range: '1-10',
       name: 'Débutant',
-      examples: ['L-sit', 'Elbow lever'],
+      examples: ['L-sit', 'Elbow lever', 'Tuck planche'],
       color: 'bg-green-500',
       icon: Activity
     },
     {
       range: '11-20',
       name: 'Intermédiaire',
-      examples: ['Back lever', 'Semi planche'],
+      examples: ['Back lever', 'Semi planche', 'Handstand'],
       color: 'bg-blue-500',
       icon: TrendingUp
     },
     {
       range: '21-30',
       name: 'Avancé',
-      examples: ['Handstand', 'Tuck planche', 'Straddle planche'],
+      examples: ['Human Flag' ,'Straddle planche', 'Front lever'],
       color: 'bg-purple-500',
       icon: Target
     },

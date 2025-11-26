@@ -43,7 +43,7 @@ export default function FigureCard({ figure }: FigureCardProps) {
           
           <h3 className="text-2xl font-bold mb-2">{figure.name}</h3>
           
-          <p className="text-gray-400 text-sm line-clamp-3">
+          <p className="text-gray-400 text-sm line-clamp-3 min-h-16">
             {figure.description}
           </p>
         </div>
